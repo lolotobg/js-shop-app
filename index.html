@@ -2,20 +2,25 @@
 <html>
 	<head>
 		<title>My js web shop</title>
-		<link href="css/ui-darkness/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+		<link href="./css/ui-darkness/jquery-ui-1.10.3.custom.css" rel="stylesheet">
 		<script src="./scripts/jquery-1.9.1.js"></script>
-		<script src="./scripts/prototype.js"></script>
+        <script src="./scripts/jquery-ui-1.10.3.custom.js"></script>
+		<script src="./scripts/prototype.js"></script><!--Warning - breaks jQuery-->
 		<script src="./scripts/extensions.js"></script>
 		<script src="./scripts/shop.js"></script>
 		<script src="./scripts/article.js"></script>
 		<script src="./scripts/category.js"></script>
 		<script src="./scripts/initialize.js"></script>
-		<script src="./scripts/jquery-ui-1.10.3.custom.js"></script>
+		<script src="./scripts/UI.js"></script>
+
+		<script>
+		$(function() {
+		    $( "#category-tabs" ).tabs();
+		});
+		</script>
+
 	</head>
 	<body>
-	<script>
-	$( "#category-tabs" ).tabs();
-	</script>
 		<a href="https://twitter.com/share" class="twitter-share-button" data-url="https://code.google.com/p/js-shop-app" data-lang="en" data-count="vertical">
 			Tweet about our shop.
 		</a>
