@@ -32,7 +32,7 @@
 
 	myShop.addCategory(kitchen);
 	var categories = myShop.getCategories();
-
+	console.log(categories[0]._super.name);
 	//myShop.removeCategory("1");
 	myShop.getProductByID("0-1");
 	var test = technics._super.getProducts();
