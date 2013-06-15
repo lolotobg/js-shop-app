@@ -43,38 +43,41 @@ var mainShop = {
 		},
 		loadRepository: function() {
 			var savedRepository = localStorage.getObject(this.name);
-			for (var i = 0; i < savedRepository.categories.length; i++) {
-				var savedCategory = savedRepository.categories[i];
-				var currentCategory = Object.create(category.userCategory);
-				currentCategory.init(savedCategory.name,savedCategory.categoryID);
-				this.addCategory(currentCategory);
-
-				for (var j = 0; j < savedCategory.products.length; j++) {
-					var savedProduct = savedCategory.products[j];
-					var currentProduct;
-					if (savedProduct.type == "phone") {
-						currentProduct = Object.create(product.phone);
-						currentProduct.init(
-							savedProduct.information.manufacturer,
-							savedProduct.information.model,
-							savedProduct.information.price,
-							savedProduct.information.productID,
-							savedProduct.information.imageSource,
-							savedProduct.information.productDescription);
-					}
-					else if(savedProduct.type == "tablet") {
-						currentProduct = Object.create(product.phone);
-						currentProduct.init(
-							savedProduct.information.manufacturer,
-							savedProduct.information.model,
-							savedProduct.information.price,
-							savedProduct.information.productID,
-							savedProduct.information.imageSource,
-							savedProduct.information.productDescription);
-					}
-					currentCategory.addProduct(currentProduct);
+			if(savedRepository!=null)
+			{
+				for (var i = 0; i < savedRepository.categories.length; i++) {
+					var savedCategory = savedRepository.categories[i];
+					var currentCategory = Object.create(category.userCategory);
+					currentCategory.init(savedCategory.name,savedCategory.categoryID);
+					this.addCategory(currentCategory);
+	
+					for (var j = 0; j < savedCategory.products.length; j++) {
+						var savedProduct = savedCategory.products[j];
+						var currentProduct;
+						if (savedProduct.type == "phone") {
+							currentProduct = Object.create(product.phone);
+							currentProduct.init(
+								savedProduct.information.manufacturer,
+								savedProduct.information.model,
+								savedProduct.information.price,
+								savedProduct.information.productID,
+								savedProduct.information.imageSource,
+								savedProduct.information.productDescription);
+						}
+						else if(savedProduct.type == "tablet") {
+							currentProduct = Object.create(product.phone);
+							currentProduct.init(
+								savedProduct.information.manufacturer,
+								savedProduct.information.model,
+								savedProduct.information.price,
+								savedProduct.information.productID,
+								savedProduct.information.imageSource,
+								savedProduct.information.productDescription);
+						}
+						currentCategory.addProduct(currentProduct);
+					};
 				};
-			};
+			}
 		}
 	}
 
