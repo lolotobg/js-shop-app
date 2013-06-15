@@ -25,6 +25,7 @@ var category = (function() {
 			};
 		}
 	}
+
 	var userCategory = mainCategory.extend({
 		init: function(name, categoryID) {
 			this._super = Object.create(this._super);
@@ -32,7 +33,6 @@ var category = (function() {
 
 		}
 	});
-
 
 	var adminCategory = mainCategory.extend({
 		init: function(name, categoryID) {

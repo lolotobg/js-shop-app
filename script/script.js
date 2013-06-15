@@ -14,7 +14,7 @@
 
 	// var panasonic = Object.create(product.phone);
 	// panasonic.init("Philips", "DVP2850", 74.90,
-	// 	technics._super.getProductID(), "../images/philips-dvp2850", "mnogo moshtna");
+	//  technics._super.getProductID(), "../images/philips-dvp2850", "mnogo moshtna");
 	// technics.addProduct(panasonic);
 
 	// var kitchen = Object.create(category.adminCategory);

@@ -1,4 +1,5 @@
 var product = (function() {
+	
 	var article = {
 		init: function(manufacturer, model, price, productID, imageSource, productDescription) {
 			this.manufacturer = manufacturer;
@@ -18,6 +19,7 @@ var product = (function() {
 				productDescription:this.productDescription});
 		}
 	}
+
 	var phone = article.extend({
 		init: function(manufacturer, model, price, productID, imageSource, productDescription) {
 			this._super = Object.create(this._super);
@@ -31,7 +33,7 @@ var product = (function() {
 		}
 	});
 
-		var tablet = article.extend({
+	var tablet = article.extend({
 		init: function(manufacturer, model, price, productID, imageSource, productDescription) {
 			this._super = Object.create(this._super);
 			this._super.init(name, manufacturer, model, price, productID, imageSource, productDescription);
