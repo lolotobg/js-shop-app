@@ -9,7 +9,7 @@ var category = (function() {
 		},
 		addProduct: function(currentProduct) {
 			this._super._products.push(currentProduct);
-			this._count++;
+			this._super._count++;
 		},
 		getProducts: function() {
 			return this._products;
@@ -25,7 +25,6 @@ var category = (function() {
 			};
 		}
 	}
-
 	var userCategory = mainCategory.extend({
 		init: function(name, categoryID) {
 			this._super = Object.create(this._super);
@@ -34,6 +33,7 @@ var category = (function() {
 		}
 	});
 
+
 	var adminCategory = mainCategory.extend({
 		init: function(name, categoryID) {
 			this._super = Object.create(this._super);
@@ -41,9 +41,9 @@ var category = (function() {
 
 		},
 		removeProduct: function(id) {
-			for (var i = 0; i < this._products.length; i++) {
-				if (this._products[i].productID == id) {
-					this._products.splice(i, 1);
+			for (var i = 0; i < this._super._products.length; i++) {
+				if (this._super._products[i]._super.productID == id) {
+					this._super._products.splice(i, 1);
 				};
 			};
 		},
@@ -51,14 +51,14 @@ var category = (function() {
 		serialize: function() {
 			//temp storage for JSON of products
 			var serializedProducts = [];
-			for (var i = 0; i < this._products.length; i++) {
-				serializedProducts.push(this._products[i].serialize());
+			for (var i = 0; i < this._super._products.length; i++) {
+				serializedProducts.push(this._super._products[i].serialize());
 			};
 
 			//return JSON object
 			return {
-				name: this.name,
-				categoryID: this.categoryID,
+				name: this._super.name,
+				categoryID: this._super.categoryID,
 				products: serializedProducts
 			};
 		}
