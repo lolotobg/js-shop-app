@@ -3,19 +3,29 @@
 	<head>
 		<title>My js web shop</title>
 		<link href="css/ui-darkness/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+		<script src="./scripts/jquery-1.9.1.js"></script>
 		<script src="./scripts/prototype.js"></script>
-		<script src="./scripts/webstorage.js"></script>
+		<script src="./scripts/extensions.js"></script>
 		<script src="./scripts/shop.js"></script>
 		<script src="./scripts/article.js"></script>
 		<script src="./scripts/category.js"></script>
 		<script src="./scripts/initialize.js"></script>
-		<script src="./scripts/jquery-1.9.1.js"></script>
-		<script src="./scripts/jquery-ui-1.10.3.custom.min.js"></script>
+		<script src="./scripts/jquery-ui-1.10.3.custom.js"></script>
 	</head>
 	<body>
+	<script>
+	$( "#category-tabs" ).tabs();
+	</script>
 		<a href="https://twitter.com/share" class="twitter-share-button" data-url="https://code.google.com/p/js-shop-app" data-lang="en" data-count="vertical">
 			Tweet about our shop.
 		</a>
+		<h2>Tabs</h2>
+		<div id="category-tabs">
+			<ul id="category-tabs-list">
+				<li><a href="#tabs-1">First</a></li>
+			</ul>
+			<div id="tabs-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 		incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 		ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+		</div>
 		<script src="./scripts/twitter.js"></script>
 	</body>
 </html>
