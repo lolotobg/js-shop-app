@@ -1,6 +1,6 @@
 var category = (function() {
 
-	var mainCategory = {
+	var mainCategory = Class.create({
 		init: function(name, categoryID) {
 			this.name = name;
 			this._products = new Array();
@@ -24,8 +24,8 @@ var category = (function() {
 				this._products[i]._super.getInformation(addition);
 			};
 		}
-	}
-	var userCategory = mainCategory.extend({
+	});
+	var userCategory = Class.create(mainCategory, {
 		init: function(name, categoryID) {
 			this._super = Object.create(this._super);
 			this._super.init(name, categoryID);
@@ -34,7 +34,7 @@ var category = (function() {
 	});
 
 
-	var adminCategory = mainCategory.extend({
+	var adminCategory = Class.create(mainCategory, {
 		init: function(name, categoryID) {
 			this._super = Object.create(this._super);
 			this._super.init(name, categoryID);

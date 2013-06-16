@@ -1,7 +1,7 @@
 (function() {
 
-	var myShop = Object.create(shop.adminShop);
-	myShop.init("mang0sh0p");
+	var myShop = Class.create(shop.adminShop);
+	myShop.prototype.init("mang0sh0p");
 
 	var technics = Object.create(category.adminCategory);
 	technics.init("Hi-Fi", myShop.getCategoryID());
@@ -42,5 +42,5 @@
 	//console.log(myShop.serialize());
 	myShop.saveRepository();
 	myShop.loadRepository();
-	myShop.getInformation();
+	//myShop.getInformation();
 }());

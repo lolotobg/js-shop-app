@@ -1,5 +1,5 @@
 var product = (function() {
-	var article = {
+	var article = Class.create({
 		init: function(manufacturer, model, price, productID, imageSource, productDescription) {
 			this.manufacturer = manufacturer;
 			this.model = model;
@@ -17,8 +17,8 @@ var product = (function() {
 				price: this.price, productID: this.productID, imageSource: this.imageSource,
 				productDescription:this.productDescription});
 		}
-	}
-	var phone = article.extend({
+	});
+	var phone = Class.create(article, {
 		init: function(manufacturer, model, price, productID, imageSource, productDescription) {
 			this._super = Object.create(this._super);
 			this._super.init(manufacturer, model, price, productID, imageSource, productDescription);
@@ -31,7 +31,7 @@ var product = (function() {
 		}
 	});
 
-		var tablet = article.extend({
+		var tablet = Class.create(article, {
 		init: function(manufacturer, model, price, productID, imageSource, productDescription) {
 			this._super = Object.create(this._super);
 			this._super.init(manufacturer, model, price, productID, imageSource, productDescription);

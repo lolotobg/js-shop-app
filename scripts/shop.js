@@ -1,5 +1,5 @@
 var shop= (function() {
-var mainShop = {
+var mainShop = Class.create({
 		init: function(name) {
 			this.name = name;
 			this._categories = new Array();
@@ -79,9 +79,9 @@ var mainShop = {
 				};
 			}
 		}
-	}
+	});
 
-	var adminShop = mainShop.extend({
+	var adminShop = Class.create(mainShop, {
 		saveRepository: function() {
 			localStorage.setObject(this.name, this.serialize());
 		},
