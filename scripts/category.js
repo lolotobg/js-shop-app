@@ -1,15 +1,15 @@
 var category = (function() {
 
 	var mainCategory = Class.create({
-		init: function(name, categoryID) {
+		initialize: function(name, categoryID) {
 			this.name = name;
 			this._products = new Array();
 			this.categoryID = categoryID;
 			this._count = 0;
 		},
 		addProduct: function(currentProduct) {
-			this._super._products.push(currentProduct);
-			this._super._count++;
+			this._products.push(currentProduct);
+			this._count++;
 		},
 		getProducts: function() {
 			return this._products;
@@ -21,14 +21,14 @@ var category = (function() {
 			console.log(addition + "Category: " + this.name + " CategoryID: " + this.categoryID)
 			addition += "\t";
 			for (var i = 0; i < this._products.length; i++) {
-				this._products[i]._super.getInformation(addition);
+				this._products[i].getInformation(addition);
 			};
 		}
 	});
 	var userCategory = Class.create(mainCategory, {
 		init: function(name, categoryID) {
 			this._super = Object.create(this._super);
-			this._super.init(name, categoryID);
+			this.init(name, categoryID);
 
 		}
 	});
@@ -37,13 +37,13 @@ var category = (function() {
 	var adminCategory = Class.create(mainCategory, {
 		init: function(name, categoryID) {
 			this._super = Object.create(this._super);
-			this._super.init(name, categoryID);
+			this.init(name, categoryID);
 
 		},
 		removeProduct: function(id) {
-			for (var i = 0; i < this._super._products.length; i++) {
-				if (this._super._products[i]._super.productID == id) {
-					this._super._products.splice(i, 1);
+			for (var i = 0; i < this._products.length; i++) {
+				if (this._products[i].productID == id) {
+					this._products.splice(i, 1);
 				};
 			};
 		},
@@ -51,14 +51,14 @@ var category = (function() {
 		serialize: function() {
 			//temp storage for JSON of products
 			var serializedProducts = [];
-			for (var i = 0; i < this._super._products.length; i++) {
-				serializedProducts.push(this._super._products[i].serialize());
+			for (var i = 0; i < this._products.length; i++) {
+				serializedProducts.push(this._products[i].serialize());
 			};
 
 			//return JSON object
 			return {
-				name: this._super.name,
-				categoryID: this._super.categoryID,
+				name: this.name,
+				categoryID: this.categoryID,
 				products: serializedProducts
 			};
 		}

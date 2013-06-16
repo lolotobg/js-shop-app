@@ -1,6 +1,6 @@
 var shop= (function() {
 var mainShop = Class.create({
-		init: function(name) {
+		initialize: function(name) {
 			this.name = name;
 			this._categories = new Array();
 			this._count = 0;
@@ -14,16 +14,16 @@ var mainShop = Class.create({
 			var currentIDs = id.split("-");
 			var currentCategory = this.getCategoryByID(currentIDs[0]);
 
-			for (var i = 0; i < currentCategory._super._products.length; i++) {
-				if (currentCategory._super._products[i].productID == id) {
-					console.log(currentCategory._products[i]);
+			for (var i = 0; i < currentCategory._products.length; i++) {
+				if (currentCategory._products[i].productID == id) {
+					//console.log(currentCategory._products[i]);
 					return currentCategory._products[i];
 				};
 			};
 		},
 		getCategoryByID: function(id) {
 			for (var i = 0; i < this._categories.length; i++) {
-				if (this._categories[i]._super.categoryID == id) {
+				if (this._categories[i].categoryID == id) {
 					return this._categories[i];
 				};
 			};
@@ -38,7 +38,7 @@ var mainShop = Class.create({
 			console.log("Shop: " + this.name)
 			var addition = "\t";
 			for (var i = 0; i < this._categories.length; i++) {
-				this._categories[i]._super.getInformation(addition);
+				this._categories[i].getInformation(addition);
 			};
 		},
 		loadRepository: function() {
@@ -47,16 +47,14 @@ var mainShop = Class.create({
 			{
 				for (var i = 0; i < savedRepository.categories.length; i++) {
 					var savedCategory = savedRepository.categories[i];
-					var currentCategory = Object.create(category.userCategory);
-					currentCategory.init(savedCategory.name,savedCategory.categoryID);
+					var currentCategory = new category.userCategory(savedCategory.name,savedCategory.categoryID);
 					this.addCategory(currentCategory);
 	
 					for (var j = 0; j < savedCategory.products.length; j++) {
 						var savedProduct = savedCategory.products[j];
 						var currentProduct;
 						if (savedProduct.type == "phone") {
-							currentProduct = Object.create(product.phone);
-							currentProduct.init(
+							currentProduct = new product.phone(
 								savedProduct.information.manufacturer,
 								savedProduct.information.model,
 								savedProduct.information.price,
@@ -65,8 +63,7 @@ var mainShop = Class.create({
 								savedProduct.information.productDescription);
 						}
 						else if(savedProduct.type == "tablet") {
-							currentProduct = Object.create(product.phone);
-							currentProduct.init(
+							currentProduct = new product.tablet(
 								savedProduct.information.manufacturer,
 								savedProduct.information.model,
 								savedProduct.information.price,
@@ -87,7 +84,7 @@ var mainShop = Class.create({
 		},
 		removeCategory: function(id) {
 			for (var i = 0; i < this._categories.length; i++) {
-				if (this._categories[i]._super.categoryID == id) {
+				if (this._categories[i].categoryID == id) {
 					this._categories.splice(i, 1);
 				};
 			};

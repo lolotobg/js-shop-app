@@ -1,6 +1,6 @@
 var product = (function() {
 	var article = Class.create({
-		init: function(manufacturer, model, price, productID, imageSource, productDescription) {
+		initialize: function(manufacturer, model, price, productID, imageSource, productDescription) {
 			this.manufacturer = manufacturer;
 			this.model = model;
 			this.price = price;
@@ -19,27 +19,25 @@ var product = (function() {
 		}
 	});
 	var phone = Class.create(article, {
-		init: function(manufacturer, model, price, productID, imageSource, productDescription) {
-			this._super = Object.create(this._super);
-			this._super.init(manufacturer, model, price, productID, imageSource, productDescription);
+		initialize: function($super, manufacturer, model, price, productID, imageSource, productDescription) {
+			$super(manufacturer, model, price, productID, imageSource, productDescription);
 			this.type = "phone";
 		},
-		serialize: function() {
+		serialize: function($super) {
 			return ({
-				type: this.type, information: this._super.serialize()
+				type: this.type, information: $super()
 			})
 		}
 	});
 
 		var tablet = Class.create(article, {
-		init: function(manufacturer, model, price, productID, imageSource, productDescription) {
-			this._super = Object.create(this._super);
-			this._super.init(manufacturer, model, price, productID, imageSource, productDescription);
+		initialize: function($super, manufacturer, model, price, productID, imageSource, productDescription) {
+			$super(manufacturer, model, price, productID, imageSource, productDescription);
 			this.type = "tablet";
 		},
-		serialize: function() {
+		serialize: function($super) {
 			return ({
-				type: this.type, information: this._super.serialize()
+				type: this.type, information: $super()
 			})
 		}
 	});
