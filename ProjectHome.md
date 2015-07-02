@@ -1,0 +1,1 @@
+Simple JavaScript based shop application (OOP).
